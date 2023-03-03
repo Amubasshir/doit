@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-const AddTask = () => {
+const AddTask = ({ tasks, setTasks }) => {
   const [task, setTask] = useState('');
   const inputRef = useRef(null);
 
@@ -24,6 +24,8 @@ const AddTask = () => {
         body: JSON.stringify({ text }),
       }
     );
+    const data = await res.json();
+    setTasks([...tasks, data]);
   };
 
   return (

@@ -17,7 +17,7 @@ const App = () => {
   const fetchingData = async () => {
     try {
       const res = await fetch(
-        'https://aluminum-delicate-snowshoe.glitch.me/tasks'
+        'https://glorious-liberating-buckaroo.glitch.me/task'
       );
       if (!res.ok) throw new Error('something went wrong');
       const data = await res.json();

@@ -15,7 +15,7 @@ const AddTask = () => {
   // task posting
   const taskPosting = async (text) => {
     const res = await fetch(
-      'https://aluminum-delicate-snowshoe.glitch.me/tasks',
+      'https://glorious-liberating-buckaroo.glitch.me/task',
       {
         method: 'POST',
         headers: {

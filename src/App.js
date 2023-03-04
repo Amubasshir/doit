@@ -52,21 +52,18 @@ const App = () => {
   };
 
   // !edit event
+
   const handleEdit = (id) => {
-    // set a target el for edit
-    const [editableTarget] = tasks.filter((task) => id === task.id);
-    editableTarget.isEdit = true;
+    const [editableTarget] = tasks.filter((task) => task.id === id);
+    editableTarget.isEditable = true;
     setEditedText(editableTarget.text);
     setTasks([...tasks]);
-    setToggleEditMode(false);
-    // re-arrange
-    tasks
-      .filter((task) => task.id === id)
-      .map((targetedEl) => (targetedEl.isEdit = false));
-    //  editing task form handler
 
-    //  set newly edited text
+    tasks
+      .filter((task) => task.id !== id)
+      .map((target) => (target.isEditable = false));
   };
+
   const handleEditSubmitter = (e, id) => {
     console.log(id);
   };

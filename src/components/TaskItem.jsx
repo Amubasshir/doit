@@ -12,13 +12,13 @@ const TaskItem = ({ task, handleEditSubmitter, editedText, setEditedText }) => {
         <span>
           <input type="checkbox" className="accent-teal-500" />
         </span>
-
-        {task.isEditable && (
+        {task.isEdit && (
           <form>
             <input required type="text" />
           </form>
         )}
-        {!task.isEditable && (
+
+        {!task.isEdit && (
           <p className="group-hover:text-teal-500">{task.text}</p>
         )}
       </div>

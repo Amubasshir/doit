@@ -55,14 +55,14 @@ const App = () => {
   const handleEdit = (id) => {
     // set a target el for edit
     const [editableTarget] = tasks.filter((task) => id === task.id);
-    editableTarget.isEditable = true;
+    editableTarget.isEdit = true;
     setEditedText(editableTarget.text);
     setTasks([...tasks]);
     setToggleEditMode(false);
     // re-arrange
     tasks
       .filter((task) => task.id === id)
-      .map((targetedEl) => (targetedEl.isEditable = false));
+      .map((targetedEl) => (targetedEl.isEdit = false));
     //  editing task form handler
 
     //  set newly edited text

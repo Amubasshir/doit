@@ -65,8 +65,35 @@ const App = () => {
   };
 
   const handleEditSubmitter = (e, id) => {
-    console.log(id);
+    e.preventDefault();
+    setToggleEditMode(toggleEditMode);
+
+    // persist data
+    const editPersistent = {
+      text: editedText,
+      id: id,
+    };
+
+    // put request
+    puttingRequest(id, editPersistent);
+
+    // real-time update
+    const [editableTarget] = tasks.filter((task) => task.id === id);
+    editableTarget.isEditable = false;
+    editableTarget.text = editPersistent.text;
+    setTasks([...tasks]);
   };
+
+  const puttingRequest = async (id, newData) => {
+    fetch(`https://glorious-liberating-buckaroo.glitch.me/task/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
+
   return (
     <div className="wrapper bg-gradient-to-t from-gray-900 to-teal-900 min-h-screen text-xl text-gray-200 flex flex-col py-10 ">
       <deleteHandlerContext.Provider value={handleDelete}>
